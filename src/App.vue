@@ -1,6 +1,27 @@
 <script setup>
-import { RouterLink, RouterView } from "vue-router";
+import { ref } from "vue";
+// import { RouterLink, RouterView } from "vue-router";
+import axios from "axios"
 
+const url=ref('')
+const screenshot=ref('')
+const submit = async() => {
+ try {
+const res=await fetch('http://localhost:2020/screen', {
+  method:'post',  
+  headers: {'Content-Type': 'application/json'},
+  body:JSON.stringify({
+    url: url.value
+  })  
+
+}).then(data => data.json())
+console.log(res);
+screenshot.value=`http://localhost:2020/static/screen/${res.id}.png`
+ } catch (error) {
+   console.log(error);
+   
+ }
+}
 </script>
 
 <template>
@@ -43,13 +64,17 @@ import { RouterLink, RouterView } from "vue-router";
          <h1 class=" font-extrabold">Welcome</h1>
         <p class=" font-black"> Welcome to our screenshot. <br>Put the link here to take a screenshot,
          </p>
-       <form action="">
-     	<form class="m-4 flex">
-    	<input class="rounded-l-lg p-4 border-b mr-0  text-gray-800   bg-transparent" placeholder="your link"/>
+       
+     	<form @submit.prevent="submit">
+    	<input v-model="url" class="rounded-l-lg p-4 border-b mr-0  text-gray-800   bg-transparent" placeholder="your link"/>
 	
-	</form>
+
+   <button>Take it</button>
        </form>
-        <button>Take it</button>
+       <a v-if="screenshot !=''" :href="screenshot" download>
+       <img :src="screenshot" alt="">
+       
+       </a>
       </section>
   </header>
 
