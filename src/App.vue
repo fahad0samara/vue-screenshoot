@@ -45,7 +45,7 @@ import { RouterLink, RouterView } from "vue-router";
          </p>
        <form action="">
      	<form class="m-4 flex">
-    	<input class="rounded-l-lg p-4 border-b mr-0  text-gray-800 border-gray-200  bg-transparent" placeholder="your@mail.com"/>
+    	<input class="rounded-l-lg p-4 border-b mr-0  text-gray-800   bg-transparent" placeholder="your link"/>
 	
 	</form>
        </form>
