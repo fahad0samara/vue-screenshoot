@@ -66,9 +66,9 @@ screenshot.value=`http://localhost:2020/static/screen/${res.id}.png`
          </p>
        
      	<form @submit.prevent="submit">
-    	<input v-model="url" class="rounded-l-lg p-4 border-b mr-0  text-gray-800   bg-transparent" placeholder="your link"/>
+    	<input v-model="url" class=" p-4 border-b mr-0  text-3xl  text-white   bg-transparent" placeholder="put the link here"/>
 	
-
+<br>
    <button>Take it</button>
        </form>
        <a v-if="screenshot !=''" :href="screenshot" download>
